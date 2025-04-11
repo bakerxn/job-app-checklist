@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Job Application Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #0073e6;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    li input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .motivational {
+      margin-top: 20px;
+      font-size: 16px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interactive Job Application Checklist</h1>
+  <ul id="checklist">
+    <li><input type="checkbox" onclick="updateChecklist()"> Choose the appropriate resume</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Edit the resume summary to fit the job app</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Choose the correct cover letter template</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Edit the cover letter to fit the job app</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Read through for errors and verify info sounds good</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Save the resume and cover letter as PDFs</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Submit and choose the next job app to apply to</li>
+    <li><input type="checkbox" onclick="updateChecklist()"> Do a stretch, pet Duke, or look at your phone before starting the next app</li>
+  </ul>
+  <p class="motivational" id="motivationalMessage"></p>
+
+  <script>
+    function updateChecklist() {
+      const listItems = document.querySelectorAll('#checklist li');
+      const motivationalMessage = document.getElementById('motivationalMessage');
+      let allChecked = true;
+
+      listItems.forEach((item) => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+          item.classList.add('completed');
+        } else {
+          item.classList.remove('completed');
+          allChecked = false;
+        }
+      });
+
+      if (allChecked) {
+        motivationalMessage.textContent = "🎉 Great job! You're ready to tackle your next application! 🎉";
+      } else {
+        motivationalMessage.textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>
